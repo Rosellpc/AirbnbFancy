@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import { Header } from './components/layout/Header';
-import { HeroSection } from './components/ui/HeroSection';
-import { SearchBox } from './components/ui/SearchBox';
-import { PropertiesSection } from './components/properties/PropertiesSection';
-import { PROPERTIES_DATA } from './data/propertiesData';
-import type { Property } from './types/propertyType';
-import { filterProperties } from './utils/filterProperties';
+import { Header } from '../components/layout/Header';
+import { HeroSection } from '../components/ui/HeroSection';
+import { SearchBox } from '../components/ui/SearchBox';
+import { PropertiesSection } from '../components/properties/PropertiesSection';
+import { PROPERTIES_DATA } from '../data/propertiesData';
+import type { Property } from '../types/propertyType';
+import { filterProperties } from '../utils/filterProperties';
 
-function App() {
+export function HomePages() {
   const [city, setCity] = useState('');
   const [search, setSearch] = useState('');
   const [propertiesFromAPI, setPropertiesFromAPI] = useState<Property[]>([]);
@@ -57,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePages;

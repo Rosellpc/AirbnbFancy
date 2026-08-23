@@ -1,12 +1,12 @@
 import { Header } from "../components/layout/Header";
 
-export function SearchPage() {
-    return ( 
+export function FavoritesPage() {
+    return (
         <>
             <Header />
             <main className="main-content">
-                <h1>Resultado de búsqueda</h1>
-                <p>Aquí aparreceran los alojamientos filtrados</p>
+            <h1>Tus favoritos</h1>
+            <p>Aquí verás las propiedades que gusrdes para revisar despúes</p>
             </main>
         </>
     );
