@@ -1,6 +1,8 @@
 import type { Property } from '../../types/propertyType';
 
-type PropertyCardProps = Omit<Property, 'id'>;
+type PropertyCardProps = Omit<Property, 'id'> & {
+  onClick: () => void;
+};
 
 export function PropertyCard({
   title,
@@ -8,10 +10,22 @@ export function PropertyCard({
   price,
   image,
   type,
+  onClick,
 }: PropertyCardProps) {
   return (
-    <article className="property-card">
+    <article
+      className="property-card"
+      onClick={onClick}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          onClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+    >
       <img src={image} alt={title} />
+
       <div className="property-card-content">
         <h4>{title}</h4>
         <p>{location}</p>
