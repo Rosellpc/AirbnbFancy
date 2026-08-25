@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { Header } from '../components/layout/Header';
 import { HeroSection } from '../components/ui/HeroSection';
 import { SearchBox } from '../components/ui/SearchBox';
 import { PropertiesSection } from '../components/properties/PropertiesSection';
@@ -32,8 +31,6 @@ export function HomePages() {
   const filteredProperties = filterProperties(propertiesFromAPI, search);
 
   return (
-    <div className="app">
-      <Header />
       <main className="main-content">
         <HeroSection />
         <SearchBox
@@ -53,7 +50,6 @@ export function HomePages() {
           <PropertiesSection properties={filteredProperties} />
         )}
       </main>
-    </div>
   );
 }
 

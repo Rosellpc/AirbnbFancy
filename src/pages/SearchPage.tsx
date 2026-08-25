@@ -1,9 +1,7 @@
-import { Header } from "../components/layout/Header";
 
 export function SearchPage() {
     return ( 
         <>
-            <Header />
             <main className="main-content">
                 <h1>Resultado de búsqueda</h1>
                 <p>Aquí aparreceran los alojamientos filtrados</p>
