@@ -10,6 +10,7 @@ import { LoginPage } from "../pages/LoginPage";
 import { BookingPage } from "../pages/BookingPage";
 import { BookingLayout } from "../layouts/BookingLayout";
 import { Booking } from "../pages/Booking";
+import { PropertyDetailPage } from "../pages/PropertyDetailPage";
 
 
 export const router = createBrowserRouter([
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
             { path: "favorites", element: <FavoritesPage />},
             { path: "profile", element: <ProfilePage /> },
             { path: "login", element: <LoginPage /> },
+            { path: "properties/:id", element: <PropertyDetailPage />},
             { path: "booking", element: <BookingLayout />,
                 children: [{path: ":id", element: <Booking />}],
             },
