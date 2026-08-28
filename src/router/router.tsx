@@ -6,7 +6,11 @@ import { NotFoundPage} from "../pages/NotFoundPage"
 import { HomePages } from "../pages/HomePages";
 import { FavoritesPage } from "../pages/FavoritesPage";
 import { ProfilePage } from "../pages/ProfilePage";
-import { LoginPage } from "../pages/LoginPage"
+import { LoginPage } from "../pages/LoginPage";
+import { BookingPage } from "../pages/BookingPage";
+import { BookingLayout } from "../layouts/BookingLayout";
+import { Booking } from "../pages/Booking";
+
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +22,10 @@ export const router = createBrowserRouter([
             { path: "favorites", element: <FavoritesPage />},
             { path: "profile", element: <ProfilePage /> },
             { path: "login", element: <LoginPage /> },
+            { path: "booking", element: <BookingLayout />,
+                children: [{path: ":id", element: <Booking />}],
+            },
+            { path: "bookingTest", element: <BookingPage />},
             { path:"*",  element:<NotFoundPage /> },
         ],
     },
