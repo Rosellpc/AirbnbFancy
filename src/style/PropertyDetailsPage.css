@@ -1,7 +1,7 @@
 /* Stylos de BookingPage */
 .property-detail-page {
-  width: min(100%, 1180px);
-  margin: 0 auto;
+  width: min(100%, auto);
+  margin: 0px auto;
   padding: 150px 20px 72px;
 }
 
@@ -342,6 +342,11 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.detail-button p {
+  padding: 15px;
+
+}
+
 .detail-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 18px 40px rgba(56, 189, 248, 0.28);
@@ -389,9 +394,10 @@
 .property-not-found h1,
 .property-not-found p {
   margin: 0;
+  gap: 5px;
 }
 
-.property-not-found p {
+.property-not-found .p {
   color: var(--text-muted);
 }
 

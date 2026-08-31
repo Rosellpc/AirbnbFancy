@@ -32,11 +32,10 @@ export function PropertyDetailPage() {
     return (
       <main className="property-detail-page">
         <section className="property-not-found">
-          <span className="eyebrow">404</span>
           <h1>Alojamiento no encontrado</h1>
-          <p>La propiedad que buscas no está disponible.</p>
-          <Link className="detail-button" to="/">
-            Volver al inicio
+          <p className="p">La propiedad que buscas no está disponible.</p>
+          <Link className="detail-button" to="/search">
+            <p>Ver otras propiedades</p>
           </Link>
         </section>
       </main>
