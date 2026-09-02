@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { ProtectedRoute } from "../components/auth/ProtectedRoute";
 import { MainLayout } from "../layouts/MainLouyout";
 
 import { SearchPage } from "../pages/SearchPage";
@@ -20,8 +21,22 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <HomePages /> },
             { path:"search", element: <SearchPage />},
-            { path: "favorites", element: <FavoritesPage />},
-            { path: "profile", element: <ProfilePage /> },
+            { 
+                path: "favorites", 
+                element: (
+                    <ProtectedRoute>
+                        <FavoritesPage /> 
+                    </ProtectedRoute>
+                ),
+            },
+            { 
+                path: "profile", 
+                element: (
+                    <ProtectedRoute>
+                        <ProfilePage />
+                    </ProtectedRoute>
+                ),
+             },
             { path: "login", element: <LoginPage /> },
             { path: "properties/:id", element: <PropertyDetailPage />},
             { path: "booking", element: <BookingLayout />,
