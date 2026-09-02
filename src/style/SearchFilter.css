@@ -1,0 +1,104 @@
+.filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(180px, 0.8fr) auto;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.filters select {
+  cursor: pointer;
+}
+
+.filters select option {
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+.filters input::placeholder {
+  color: var(--text-muted);
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: rgba(56, 189, 248, 0.65);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+}
+
+.filters button {
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.95),
+    rgba(167, 139, 250, 0.9)
+  );
+  color: #06111f;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.filters button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(56, 189, 248, 0.2);
+}
+
+@media (max-width: 720px) {
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 460px) {
+  .filters {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .filters button {
+    grid-column: auto;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filters input,
+  .filters select,
+  .filters button {
+    transition: none;
+  }
+}
