@@ -24,7 +24,7 @@ const reviews = [
   },
 ];
 
-export function PropertyDetailPage() {
+export default function PropertyDetailPage() {
   const property = useLoaderData() as Property;
 
 

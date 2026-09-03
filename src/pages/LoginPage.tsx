@@ -7,7 +7,7 @@ type LocationState = {
   from?: string;
 };
 
-export function LoginPage() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as LocationState | null;

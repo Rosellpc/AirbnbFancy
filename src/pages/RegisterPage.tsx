@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { register } from "../utils/auth";
 import "../style/LoginPage.css";
 
-export function RegisterPage() {
+export default function RegisterPage() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");

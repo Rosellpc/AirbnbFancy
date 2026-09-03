@@ -1,7 +1,6 @@
-import { use } from "react";
 import { useParams } from "react-router-dom";
 
-export function Booking() {
+export default function Booking() {
     const { id } = useParams();
 
     return (

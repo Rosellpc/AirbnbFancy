@@ -1,5 +1,5 @@
 
-export function FavoritesPage() {
+export default function FavoritesPage() {
     return (
         <>
             <main className="main-content">

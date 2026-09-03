@@ -1,34 +1,45 @@
+import { lazy, Suspense } from "react";
+import type { ComponentType, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "../components/auth/ProtectedRoute";
-import { MainLayout } from "../layouts/MainLouyout";
-
-
-import { SearchPage } from "../pages/SearchPage";
-import { NotFoundPage} from "../pages/NotFoundPage"
-import { HomePages } from "../pages/HomePages";
-import { FavoritesPage } from "../pages/FavoritesPage";
-import { ProfilePage } from "../pages/ProfilePage";
-import { LoginPage } from "../pages/LoginPage";
+import { MainLayout } from "../layouts/MainLayout";
 import { BookingLayout } from "../layouts/BookingLayout";
-import { Booking } from "../pages/Booking";
-import { PropertyDetailPage } from "../pages/PropertyDetailPage";
-import { RegisterPage } from "../pages/RegisterPage";
 import { propertyDetailLoader } from "../loaders/propertyDetailLoader";
 
+
+
+
+const  SearchPage = lazy(() => import ("../pages/SearchPage"));
+const  NotFoundPage= lazy(() => import ("../pages/NotFoundPage"));
+const  HomePages = lazy(() => import ("../pages/HomePages"));
+const  FavoritesPage = lazy(() => import ("../pages/FavoritesPage"));
+const  ProfilePage = lazy(() => import ("../pages/ProfilePage"));
+const  LoginPage = lazy(() => import ("../pages/LoginPage"));
+const  Booking = lazy(() => import ("../pages/Booking"));
+const  PropertyDetailPage = lazy(() => import ("../pages/PropertyDetailPage"));
+const  RegisterPage = lazy(() => import ("../pages/RegisterPage"));
+
+function withSuspense(Component: ComponentType): ReactElement {
+    return (
+        <Suspense fallback={<p className="main-content">Cargando página...</p>}>
+            <Component />
+        </Suspense>
+    ); 
+}
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
         children: [
-            { index: true, element: <HomePages /> },
-            { path:"search", element: <SearchPage />},
+            { index: true, element: withSuspense(HomePages) },
+            { path:"search", element: withSuspense(SearchPage) },
             { 
                 path: "favorites", 
                 element: (
                     <ProtectedRoute>
-                        <FavoritesPage /> 
+                        {withSuspense(FavoritesPage)} 
                     </ProtectedRoute>
                 ),
             },
@@ -36,15 +47,15 @@ export const router = createBrowserRouter([
                 path: "profile", 
                 element: (
                     <ProtectedRoute>
-                        <ProfilePage />
+                        {withSuspense(ProfilePage)}
                     </ProtectedRoute>
                 ),
              },
-            { path: "login", element: <LoginPage /> },
-            { path: "register", element: <RegisterPage />},
+            { path: "login", element: withSuspense(LoginPage) },
+            { path: "register", element: withSuspense(RegisterPage)},
             { 
                 path: "properties/:id", 
-                element: <PropertyDetailPage />,
+                element: withSuspense(PropertyDetailPage),
                 loader: propertyDetailLoader,
                 errorElement: (
                     <main className="property-detail-page">
@@ -62,12 +73,12 @@ export const router = createBrowserRouter([
                 path: "booking", 
                 element: (
                     <ProtectedRoute>
-                        <BookingLayout />
+                        {withSuspense(BookingLayout)}
                     </ProtectedRoute>
                 ),
-                children: [{path: ":id", element: <Booking />}],
+                children: [{path: ":id", element: withSuspense(Booking)}],
             },
-            { path:"*",  element:<NotFoundPage /> },
+            { path:"*",  element: withSuspense(NotFoundPage) },
         ],
     },
 ]);

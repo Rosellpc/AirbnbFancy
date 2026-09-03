@@ -5,7 +5,7 @@ import { SearchFilters } from "../components/search/SearchFilter";
 import "../style/SearchPage.css";
 import "../style/SearchFilter.css";
 
-export function SearchPage() {
+export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const destination = searchParams.get("destination") || "";

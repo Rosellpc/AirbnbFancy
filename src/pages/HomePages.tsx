@@ -7,7 +7,7 @@ import { PROPERTIES_DATA } from '../data/propertiesData';
 import type { Property } from '../types/propertyType';
 import { filterProperties } from '../utils/filterProperties';
 
-export function HomePages() {
+export default function HomePages() {
   const [city, setCity] = useState('');
   const [search, setSearch] = useState('');
   const [propertiesFromAPI, setPropertiesFromAPI] = useState<Property[]>([]);
@@ -53,4 +53,3 @@ export function HomePages() {
   );
 }
 
-export default HomePages;
