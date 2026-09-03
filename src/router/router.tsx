@@ -8,10 +8,10 @@ import { HomePages } from "../pages/HomePages";
 import { FavoritesPage } from "../pages/FavoritesPage";
 import { ProfilePage } from "../pages/ProfilePage";
 import { LoginPage } from "../pages/LoginPage";
-import { BookingPage } from "../pages/BookingPage";
 import { BookingLayout } from "../layouts/BookingLayout";
 import { Booking } from "../pages/Booking";
 import { PropertyDetailPage } from "../pages/PropertyDetailPage";
+import { RegisterPage } from "../pages/RegisterPage";
 
 
 export const router = createBrowserRouter([
@@ -38,11 +38,17 @@ export const router = createBrowserRouter([
                 ),
              },
             { path: "login", element: <LoginPage /> },
+            { path: "register", element: <RegisterPage />},
             { path: "properties/:id", element: <PropertyDetailPage />},
-            { path: "booking", element: <BookingLayout />,
+            { 
+                path: "booking", 
+                element: (
+                    <ProtectedRoute>
+                        <BookingLayout />
+                    </ProtectedRoute>
+                ),
                 children: [{path: ":id", element: <Booking />}],
             },
-            { path: "bookingTest", element: <BookingPage />},
             { path:"*",  element:<NotFoundPage /> },
         ],
     },

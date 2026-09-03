@@ -143,6 +143,40 @@ img {
     color 0.25s ease;
 }
 
+.header nav button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.header nav button:hover {
+  color: var(--text-main);
+  background: var(--surface-strong);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 860px) {
+  .header nav button {
+    padding: 0 9px;
+    font-size: 0.8rem;
+  }
+}
+
 .header nav a:hover, .header nav a.active {
   color: var(--text-main);
   background: var(--surface-strong);
