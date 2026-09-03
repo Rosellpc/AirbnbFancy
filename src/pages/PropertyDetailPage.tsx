@@ -1,5 +1,5 @@
-import { Link, useParams } from "react-router-dom";
-import { PROPERTIES_DATA } from "../data/propertiesData";
+import { Link, useLoaderData } from "react-router-dom";
+import { Property } from "../types/propertyType";
 import "../style/PropertyDetailsPage.css";
 
 const amenities = [
@@ -25,22 +25,8 @@ const reviews = [
 ];
 
 export function PropertyDetailPage() {
-  const { id } = useParams();
-  const property = PROPERTIES_DATA.find((item) => item.id === Number(id));
+  const property = useLoaderData() as Property;
 
-  if (!property) {
-    return (
-      <main className="property-detail-page">
-        <section className="property-not-found">
-          <h1>Alojamiento no encontrado</h1>
-          <p className="p">La propiedad que buscas no está disponible.</p>
-          <Link className="detail-button" to="/search">
-            <p>Ver otras propiedades</p>
-          </Link>
-        </section>
-      </main>
-    );
-  }
 
   return (
     <main className="property-detail-page">
