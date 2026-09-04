@@ -1,10 +1,12 @@
 import { PropertyCard } from "../components/properties/PropertyCard";
+import { useNavigate } from "react-router-dom";
 import { PROPERTIES_DATA } from "../data/propertiesData";
 import { getFavoriteIds } from "../utils/favorites";
 import "../style/FavoritesPage.css";
 
 export default function FavoritesPage() {
   const favoriteIds = getFavoriteIds();
+  const navigate = useNavigate();
 
   const favoriteProperties = PROPERTIES_DATA.filter((property) =>
     favoriteIds.includes(property.id),
@@ -27,7 +29,7 @@ export default function FavoritesPage() {
               price={property.price}
               image={property.image}
               type={property.type}
-              onClick={() => {}}
+              onClick={() => navigate(`/properties/${property.id}`)}
             />
           ))}
         </section>

@@ -1,9 +1,11 @@
+import "../../style/Footer.css";
+
 export function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-brand">
-          <h2>AirbnbFancy</h2>
+          <h2 className="footer-logo-glass">FANCY-HOST</h2>
           <p>Encuentra espacios únicos para vivir experiencias inolvidables.</p>
         </div>
 
@@ -21,7 +23,7 @@ export function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} AirbnbFancy</span>
+        <span>© {new Date().getFullYear()} AirbnbFancy todos los derechos reservados - 2026</span>
         <span>Diseñado para viajar mejor.</span>
       </div>
     </footer>

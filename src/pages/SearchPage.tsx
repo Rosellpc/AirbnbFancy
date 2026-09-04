@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { PropertyCard } from "../components/properties/PropertyCard";
 import { PROPERTIES_DATA } from "../data/propertiesData";
 import { SearchFilters } from "../components/search/SearchFilter";
@@ -7,6 +7,7 @@ import "../style/SearchFilter.css";
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const destination = searchParams.get("destination") || "";
   const type = searchParams.get("type") || "";
@@ -66,7 +67,7 @@ export default function SearchPage() {
             price={property.price}
             image={property.image}
             type={property.type}
-            onClick={() => {}}
+            onClick={() => navigate(`/properties/${property.id}`)}
           />
         ))}
       </div>
