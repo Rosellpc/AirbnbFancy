@@ -492,3 +492,10 @@
     transition: none;
   }
 }
+
+/* Estilo del boton guardar para favoritos */
+.property-detail-actions button.is-favorite {
+  border-color: rgba(244, 114, 182, 0.45);
+  background: rgba(244, 114, 182, 0.14);
+  color: #f9a8d4;
+}

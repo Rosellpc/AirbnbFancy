@@ -9,7 +9,6 @@ import { propertyDetailLoader } from "../loaders/propertyDetailLoader";
 
 
 
-
 const  SearchPage = lazy(() => import ("../pages/SearchPage"));
 const  NotFoundPage= lazy(() => import ("../pages/NotFoundPage"));
 const  HomePages = lazy(() => import ("../pages/HomePages"));
@@ -19,6 +18,7 @@ const  LoginPage = lazy(() => import ("../pages/LoginPage"));
 const  Booking = lazy(() => import ("../pages/Booking"));
 const  PropertyDetailPage = lazy(() => import ("../pages/PropertyDetailPage"));
 const  RegisterPage = lazy(() => import ("../pages/RegisterPage"));
+const  RouteErrorPage = lazy(() => import ("../pages/RouteErrorPage"));
 
 function withSuspense(Component: ComponentType): ReactElement {
     return (
@@ -57,17 +57,7 @@ export const router = createBrowserRouter([
                 path: "properties/:id", 
                 element: withSuspense(PropertyDetailPage),
                 loader: propertyDetailLoader,
-                errorElement: (
-                    <main className="property-detail-page">
-                        <section className="property-not-found">
-                        <h1>Alojamiento no encontrado</h1>
-                        <p className="p">La propiedad que buscas no está disponible.</p>
-                        <Link className="detail-button" to="/search">
-                            <p>Ver otras propiedades</p>
-                        </Link>
-                        </section>
-                    </main>                   
-                ),
+                errorElement: withSuspense(RouteErrorPage)
             },
             { 
                 path: "booking", 

@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { Property } from "../types/propertyType";
+import { isFavorite, toggleFavorite } from "../utils/favorites";
 import "../style/PropertyDetailsPage.css";
 
 const amenities = [
@@ -27,6 +29,12 @@ const reviews = [
 export default function PropertyDetailPage() {
   const property = useLoaderData() as Property;
 
+  const [saved, setSaved] = useState(() => isFavorite(property.id));
+
+  const handleFavorite = () => {
+    setSaved(toggleFavorite(property.id))
+  }
+
 
   return (
     <main className="property-detail-page">
@@ -51,8 +59,14 @@ export default function PropertyDetailPage() {
             </div>
 
             <div className="property-detail-actions">
-              <button type="button" aria-label="Guardar propiedad">
-                ♡ Guardar
+              <button
+                type="button"
+                aria-label={saved ? "Quitar de favoritos" : "Guardar propiedad"}
+                aria-pressed={saved}
+                className={saved ? "is-favorite" : ""}
+                onClick={handleFavorite}
+              >
+                {saved ? "♥ Guardado" : "♡ Guardar"}
               </button>
               <button type="button" aria-label="Compartir propiedad">
                 ↗ Compartir
