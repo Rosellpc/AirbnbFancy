@@ -66,7 +66,14 @@ export const router = createBrowserRouter([
                         {withSuspense(BookingLayout)}
                     </ProtectedRoute>
                 ),
-                children: [{path: ":id", element: withSuspense(Booking)}],
+                children: [
+                    {
+                    path: ":id", 
+                    element: withSuspense(Booking),
+                    loader: propertyDetailLoader,
+                    errorElement: withSuspense(RouteErrorPage),
+                    },
+                ],
             },
             { path:"*",  element: withSuspense(NotFoundPage) },
         ],
